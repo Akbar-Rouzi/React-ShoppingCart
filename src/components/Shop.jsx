@@ -1,15 +1,15 @@
-import { products } from "../products"
+import { PRODUCTS } from "../products"
 import Product from "./Product"
 
-export default function Shop() {
+export default function Shop({onAddItemToCart}) {
     return (
         <section id="shop">
             <h2>Elegant Clothing For Everyone</h2>
             <ul id="products">
                 {
-                    products.map(product => (
+                    PRODUCTS.map(product => (
                         <li key={product.id}>
-                            <Product {...product} />
+                            <Product {...product} onAddToCart={onAddItemToCart} />
                         </li>
                     ))
                 }

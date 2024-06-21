@@ -1,6 +1,7 @@
 
 
-export default function Header() {
+export default function Header({cart}) {   
+    const cartQuantity = cart.items.length;
     return (
         <>
             <header id="main-header">
@@ -9,7 +10,7 @@ export default function Header() {
                     <h1>Elegant Context</h1>
                 </div>
                 <p>
-                    <button>Cart</button>
+                    <button>Cart({cartQuantity})</button>
                 </p>
             </header>
         </>

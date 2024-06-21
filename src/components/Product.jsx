@@ -4,6 +4,7 @@ export default function Product({
     title,
     price,
     description,
+    onAddToCart
 }) {
     return (
         <article className="product">
@@ -15,7 +16,7 @@ export default function Product({
                     <p>{description}</p>
                 </div>
                 <p className='product-actions'>
-                <button>Add to Cart</button>
+                <button onClick={() => onAddToCart(id)}>Add to Cart</button>
                 </p>
             </div>
         </article>
