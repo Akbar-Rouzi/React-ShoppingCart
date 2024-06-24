@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { PRODUCTS } from './products';
 import Header from './components/Header';
 import Shop from './components/Shop';
+import Product from './components/Product';
+import { PRODUCTS } from "./products"
 
 function App() {
   const [shoppingCart, setShoppingCart] = useState({
@@ -49,7 +50,7 @@ function App() {
       };
 
       updatedItem.quantity += amount;
-      if(updatedItem.quantity <= 0 ) {
+      if (updatedItem.quantity <= 0) {
         updatedItems.splice(updatedItemIndex, 1)
       } else {
         updatedItems[updatedItemIndex] = updatedItem;
@@ -65,7 +66,17 @@ function App() {
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity} />
-      <Shop onAddItemToCart={handleAddItemToCart} />
+      <Shop>
+        {
+          PRODUCTS.map(product => {
+            return (
+              <li key={product.id}>
+                <Product {...product} onAddToCart={handleAddItemToCart} />
+              </li>
+            )
+          })
+        }
+      </Shop>
     </>
   )
 }
